@@ -22,6 +22,6 @@ public class TestEntry
                 "Size: CUARENTA\n" +
                 "Address: Carrer Carretó\n" +
                 "Payment: manu@paypal.com\n" +
-                "Total: 20.0");
+                "Total: 20.0\n");
     }
 }

@@ -10,9 +10,12 @@ public class TestSneaker
 {
     Sneaker sneaker;
 
+    @Before
+    public void setUp(){
+        sneaker = new Sneaker("Nike air", "Nike", 20d);
+    }
     @Test
     public void sizesToStringTest(){
-        sneaker = new Sneaker("Nike air", "Nike", 20d);
         sneaker.sizesRun(Sizes.CUARENTA,Sizes.TREINTAYNUEVE);
         ArrayList<String> result = sneaker.sizesToString();
         Assert.assertEquals("7.0", result.get(0));
@@ -20,8 +23,35 @@ public class TestSneaker
     }
 
     @Test
+    public void registerTest(){
+        Entry entry = new Entry("manu@gmail.com");
+        sneaker.register(entry);
+        Assert.assertEquals(1, sneaker.totalEntries().intValue());
+    }
+
+    @Test
+    public void registerNoDuplicatesTest(){
+        Entry entry = new Entry("manu@gmail.com");
+        sneaker.register(entry);
+        sneaker.register(entry);
+        Assert.assertEquals(1, sneaker.totalEntries().intValue());
+    }
+
+    @Test
+    public void registerNoDuplicatesByPaymentTest(){
+        Entry entry = new Entry("manu@gmail.com");
+        entry.payment("manu@gmail.com");
+
+        Entry entry2 = new Entry("payment@gmail.com");
+        entry2.payment("manu@gmail.com");
+
+        sneaker.register(entry);
+        sneaker.register(entry2);
+        Assert.assertEquals(1, sneaker.totalEntries().intValue());
+    }
+
+    @Test
     public void toStringTest(){
-        sneaker = new Sneaker("Nike air", "Nike", 20d);
         Assert.assertEquals(sneaker.toString(), "Nike air\n" +
                 "Nike\n" +
                 "20.0 €\n" +

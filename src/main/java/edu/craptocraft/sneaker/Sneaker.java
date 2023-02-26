@@ -1,6 +1,10 @@
 package edu.craptocraft.sneaker;
 
+import com.sun.javafx.collections.MappingChange;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Sneaker implements Raffle
 {
@@ -8,6 +12,8 @@ public class Sneaker implements Raffle
     private String name;
     private Double price;
     private ArrayList<Sizes> sizes = new ArrayList<>();
+
+    private Map<String, Entry> entries = new HashMap<>();
 
 
     public Sneaker(String style, String name, Double price)
@@ -31,6 +37,33 @@ public class Sneaker implements Raffle
     }
 
     @Override
+    public void register(Entry... args)
+    {
+        for (Entry entry: args){
+            if (!this.checkIfEntryExists(entry)) {
+                entries.put(entry.getEmail(), entry);
+            }
+        }
+    }
+
+    private boolean checkIfEntryExists(Entry entry) {
+        for(Map.Entry<String, Entry> entryMap : entries.entrySet()){
+            if(entryMap.getValue().equals(entry)){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    @Override
+    public Integer totalEntries()
+    {
+        return entries.size();
+    }
+
+
+    @Override
     public Entry draw()
     {
         return null;
@@ -48,7 +81,12 @@ public class Sneaker implements Raffle
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        sb.append(style).append("\n").append(name).append("\n").append(price).append(" €").append("\n").append(this.sizesToString());
+        sb.append(style).append("\n")
+                .append(name).append("\n")
+                .append(price).append(" €").append("\n")
+                .append(this.sizesToString());
         return sb.toString();
     }
+
+
 }

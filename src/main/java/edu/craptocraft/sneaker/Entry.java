@@ -1,6 +1,8 @@
 package edu.craptocraft.sneaker;
 
 
+import java.util.Objects;
+
 public class Entry
 {
     private String email;
@@ -10,11 +12,23 @@ public class Entry
     private String payment;
     private Sizes size;
 
+
+
     public Entry(){}
 
     public Entry(String email)
     {
         this.email = email;
+    }
+
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public String getPayment()
+    {
+        return payment;
     }
 
     public void setUserName(String userName)
@@ -53,7 +67,23 @@ public class Entry
                 .append("\n")
                 .append("Payment: ").append(payment)
                 .append("\n")
-                .append("Total: ").append(total);
+                .append("Total: ").append(total)
+                .append("\n");
         return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Entry entry = (Entry) o;
+        return Objects.equals(email, entry.email) || Objects.equals(payment, entry.payment);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(email, payment);
     }
 }
