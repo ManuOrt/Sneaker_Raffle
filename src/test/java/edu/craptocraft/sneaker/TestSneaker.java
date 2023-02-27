@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TestSneaker
 {
@@ -48,6 +50,13 @@ public class TestSneaker
         sneaker.register(entry);
         sneaker.register(entry2);
         Assert.assertEquals(1, sneaker.totalEntries().intValue());
+    }
+
+    @Test
+    public void listEntriesTest(){
+        Entry entry = new Entry("manu@gmail.com");
+        sneaker.register(entry);
+        Assert.assertEquals("[manu@gmail.com]", sneaker.listEntries());
     }
 
     @Test

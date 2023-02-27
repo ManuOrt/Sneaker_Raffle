@@ -8,6 +8,6 @@ public interface Raffle
 //    public void cancel();
 
     public Integer totalEntries();
-//    public String listEntries();
+    public String listEntries();
     public Entry draw();
 }

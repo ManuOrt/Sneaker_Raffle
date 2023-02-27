@@ -4,6 +4,7 @@ import com.sun.javafx.collections.MappingChange;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Sneaker implements Raffle
@@ -12,9 +13,7 @@ public class Sneaker implements Raffle
     private String name;
     private Double price;
     private ArrayList<Sizes> sizes = new ArrayList<>();
-
     private Map<String, Entry> entries = new HashMap<>();
-
 
     public Sneaker(String style, String name, Double price)
     {
@@ -62,6 +61,16 @@ public class Sneaker implements Raffle
         return entries.size();
     }
 
+    @Override
+    public String listEntries()
+    {
+        List<String> lEntries = new ArrayList<>();
+        for (Map.Entry<String, Entry> registerEntries : entries.entrySet()){
+            lEntries.add(registerEntries.getKey());
+        }
+        return lEntries.toString();
+    }
+
 
     @Override
     public Entry draw()
@@ -76,6 +85,8 @@ public class Sneaker implements Raffle
         }
         return stringSizes;
     }
+
+
 
 
     @Override
