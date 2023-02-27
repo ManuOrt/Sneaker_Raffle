@@ -45,6 +45,14 @@ public class Sneaker implements Raffle
         }
     }
 
+    @Override
+    public void cancel(Entry entry)
+    {
+        if (this.checkIfEntryExists(entry)){
+            entries.remove(entry.getEmail());
+        }
+    }
+
     private boolean checkIfEntryExists(Entry entry) {
         for(Map.Entry<String, Entry> entryMap : entries.entrySet()){
             if(entryMap.getValue().equals(entry)){

@@ -166,13 +166,13 @@ public class App
 //
         System.out.println("\n\t\tEntries:\n\t\t" + craft.listEntries());
 //
-//        /**
-//         * Summer se lo piensa y decide anular su participacion.
-//         * Elimina la participacion de Summer.
-//         */
-//
-//        craft.cancel(summer);
-//        System.out.println("\n\t\tSummer is gone :\n\t\t" + craft.listEntries());
+        /**
+         * Summer se lo piensa y decide anular su participacion.
+         * Elimina la participacion de Summer.
+         */
+
+        craft.cancel(summer);
+        System.out.println("\n\t\tSummer is gone :\n\t\t" + craft.listEntries());
 //
 //        /**
 //         * Extrae una participacion de la rifa.

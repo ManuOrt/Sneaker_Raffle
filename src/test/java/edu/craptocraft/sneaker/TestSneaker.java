@@ -60,6 +60,15 @@ public class TestSneaker
     }
 
     @Test
+    public void cancelTest(){
+        Entry entry = new Entry("manu@gmail.com");
+        sneaker.register(entry);
+        Assert.assertEquals(1, sneaker.totalEntries().intValue());
+        sneaker.cancel(entry);
+        Assert.assertEquals(0, sneaker.totalEntries().intValue());
+    }
+
+    @Test
     public void toStringTest(){
         Assert.assertEquals(sneaker.toString(), "Nike air\n" +
                 "Nike\n" +
