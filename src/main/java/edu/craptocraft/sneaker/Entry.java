@@ -51,6 +51,11 @@ public class Entry
         this.size = size;
     }
 
+    public Double getTotal()
+    {
+        return total;
+    }
+
     public void payment(String payment)
     {
         this.payment = payment;
