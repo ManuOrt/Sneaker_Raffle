@@ -2,10 +2,7 @@ package edu.craptocraft.sneaker;
 
 import com.sun.javafx.collections.MappingChange;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Sneaker implements Raffle
 {
@@ -83,7 +80,14 @@ public class Sneaker implements Raffle
     @Override
     public Entry draw()
     {
-        return null;
+        List<String> lEntries = new ArrayList<>();
+        for (Map.Entry<String, Entry> registerEntries : entries.entrySet()){
+            lEntries.add(registerEntries.getKey());
+        }
+
+        int randomIndex = new Random().nextInt(entries.size());
+
+        return entries.get(lEntries.get(randomIndex));
     }
 
     public ArrayList<String> sizesToString(){

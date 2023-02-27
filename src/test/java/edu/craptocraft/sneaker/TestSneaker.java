@@ -4,9 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class TestSneaker
 {
@@ -66,6 +64,20 @@ public class TestSneaker
         Assert.assertEquals(1, sneaker.totalEntries().intValue());
         sneaker.cancel(entry);
         Assert.assertEquals(0, sneaker.totalEntries().intValue());
+    }
+
+    @Test
+    public void drawTest(){
+        String[] emails = {"manu@gmail.com", "manus@gmail.com"};
+
+        Entry entry = new Entry(emails[0]);
+        Entry entry2 = new Entry(emails[1]);
+
+        sneaker.register(entry);
+        sneaker.register(entry2);
+
+        Entry winner = sneaker.draw();
+        Assert.assertTrue(Arrays.asList(emails).contains(winner.getEmail()));
     }
 
     @Test

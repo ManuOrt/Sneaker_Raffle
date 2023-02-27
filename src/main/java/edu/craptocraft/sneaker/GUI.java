@@ -1,5 +1,7 @@
 package edu.craptocraft.sneaker;
 
+import java.util.Random;
+
 public class GUI
 {
 
@@ -16,5 +18,11 @@ public class GUI
 
    public static void drawEntry(Entry entry){
        System.out.println(entry.toString());
+   }
+
+   public static void drawWinner(Entry entry){
+       System.out.println("¡¡ You are a Winner !!:");
+       System.out.println(entry.toString());
+
    }
 }
