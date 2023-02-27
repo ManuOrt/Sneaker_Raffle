@@ -1,5 +1,7 @@
 package edu.craptocraft.sneaker;
 
+import java.util.Optional;
+
 public interface Raffle
 {
     public void sizesRun(Sizes eu,Sizes us);

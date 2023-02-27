@@ -30,4 +30,5 @@ public class TestPaypal
         Assert.assertEquals(payment.credit(emails[0]), 100d, 0);
         Assert.assertFalse(payment.pay(emails[0], 200d));
     }
+
 }

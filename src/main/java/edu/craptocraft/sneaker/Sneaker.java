@@ -1,7 +1,4 @@
 package edu.craptocraft.sneaker;
-
-import com.sun.javafx.collections.MappingChange;
-
 import java.util.*;
 
 public class Sneaker implements Raffle
@@ -10,7 +7,8 @@ public class Sneaker implements Raffle
     private String name;
     private Double price;
     private ArrayList<Sizes> sizes = new ArrayList<>();
-    private Map<String, Entry> entries = new HashMap<>();
+
+    private Bucket bucket = new Bucket();
 
     public Sneaker(String style, String name, Double price)
     {
@@ -36,58 +34,32 @@ public class Sneaker implements Raffle
     public void register(Entry... args)
     {
         for (Entry entry: args){
-            if (!this.checkIfEntryExists(entry)) {
-                entries.put(entry.getEmail(), entry);
-            }
+            bucket.add(entry);
         }
     }
 
     @Override
     public void cancel(Entry entry)
     {
-        if (this.checkIfEntryExists(entry)){
-            entries.remove(entry.getEmail());
-        }
-    }
-
-    private boolean checkIfEntryExists(Entry entry) {
-        for(Map.Entry<String, Entry> entryMap : entries.entrySet()){
-            if(entryMap.getValue().equals(entry)){
-                return true;
-            }
-        }
-
-        return false;
+        bucket.delete(entry);
     }
 
     @Override
     public Integer totalEntries()
     {
-        return entries.size();
+        return bucket.totalEntries();
     }
 
     @Override
     public String listEntries()
     {
-        List<String> lEntries = new ArrayList<>();
-        for (Map.Entry<String, Entry> registerEntries : entries.entrySet()){
-            lEntries.add(registerEntries.getKey());
-        }
-        return lEntries.toString();
+        return bucket.listEntries();
     }
-
 
     @Override
     public Entry draw()
     {
-        List<String> lEntries = new ArrayList<>();
-        for (Map.Entry<String, Entry> registerEntries : entries.entrySet()){
-            lEntries.add(registerEntries.getKey());
-        }
-
-        int randomIndex = new Random().nextInt(entries.size());
-
-        return entries.get(lEntries.get(randomIndex));
+        return bucket.draw();
     }
 
     public ArrayList<String> sizesToString(){
@@ -99,8 +71,6 @@ public class Sneaker implements Raffle
     }
 
 
-
-
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
@@ -110,6 +80,4 @@ public class Sneaker implements Raffle
                 .append(this.sizesToString());
         return sb.toString();
     }
-
-
 }

@@ -21,19 +21,19 @@ import edu.craptocraft.sneaker.*;
  * y el sistema de pago elimina el cargo
  * en la cuenta cliente.
  *
- * Sólo se permite una participación por 
- * persona, por lo que la tienda se 
+ * Sólo se permite una participación por
+ * persona, por lo que la tienda se
  * encarga de implementar
  * una serie de medidas para evitar las
  * dobles entradas (gente que participa
- * dos veces con la misma cuenta) 
+ * dos veces con la misma cuenta)
  * y bots de personas que disponen
  * de más de una cuenta en el sistema.
  *
- * Implementa las historias de usuario 
+ * Implementa las historias de usuario
  * de las GUI proporcionadas, pero en ASCII.
  *
- * La lógica tras cada historia de usuario 
+ * La lógica tras cada historia de usuario
  * está descrita en el `main` de la clase
  * principal `App.java`.
  */
@@ -69,7 +69,7 @@ public class App
         // indica el rango de tallas
         craft.sizesRun(Sizes.CUARENTA, Sizes.CUARENTAYDOS);
         GUI.drawSneaker(craft);
-//
+
         /**
          * El usuario Squanchy introduce sus datos
          * para obtener una participacion.
@@ -131,12 +131,12 @@ public class App
         doubleEntry.payment("squanchy@paypal.com");
         craft.register(doubleEntry);
         System.out.println("\t\tSquanchy out!:" + craft.totalEntries());
-//
+
         /**
          * Genera dos participaciones más
          * y registralas en la rifa.
          */
-//
+
         Entry birdman = new Entry("birdman@love.in");
         birdman.setUserName("Birdman");
         birdman.setSize(Sizes.CUARENTA);
@@ -159,13 +159,13 @@ public class App
         summer.payment("summer@paypal.com");
 
         craft.register(birdman, morty, summer);
-//
+
         /**
          * Muestra el email de todos los participantes en la rifa.
          */
-//
+
         System.out.println("\n\t\tEntries:\n\t\t" + craft.listEntries());
-//
+
         /**
          * Summer se lo piensa y decide anular su participacion.
          * Elimina la participacion de Summer.
@@ -173,7 +173,7 @@ public class App
 
         craft.cancel(summer);
         System.out.println("\n\t\tSummer is gone :\n\t\t" + craft.listEntries());
-//
+
         /**
          * Extrae una participacion de la rifa.
          * Es el ganador de la rifa.
