@@ -1,5 +1,7 @@
 package edu.craptocraft;
 
+import edu.craptocraft.payment.Payment;
+import edu.craptocraft.payment.Paypal;
 import edu.craptocraft.sneaker.*;
 
 /**

@@ -1,4 +1,4 @@
-package edu.craptocraft.sneaker;
+package edu.craptocraft.payment;
 
 public interface Payment
 {

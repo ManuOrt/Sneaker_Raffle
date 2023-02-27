@@ -1,5 +1,7 @@
 package edu.craptocraft.sneaker;
 
+import edu.craptocraft.payment.Payment;
+import edu.craptocraft.payment.Paypal;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

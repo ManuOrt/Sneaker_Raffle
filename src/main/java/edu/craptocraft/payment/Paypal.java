@@ -1,4 +1,6 @@
-package edu.craptocraft.sneaker;
+package edu.craptocraft.payment;
+
+import edu.craptocraft.payment.Payment;
 
 import java.util.HashMap;
 import java.util.Map;
